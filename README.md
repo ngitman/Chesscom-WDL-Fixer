@@ -1,6 +1,7 @@
 # Chesscom-WDL-Fixer
 ## Introduction
 Chesscom-WDL-Fixer is a script written in Python that utilizes the chess.com API Python wrapper and user-inputted probabilities to determine how many Chess.com games it would take a user to climb out of a negative W/D/L ratio. The script uses random integers to emulate a win, loss, or a draw, and continuously increments until a positive W/D/L ratio has been achieved. A window displaying a plot graph will open up to display the projected growth in W/D/L as well as the amount of trials it would take. 
+![github graphic](https://github.com/ngitman/Chesscom-WDL-Fixer/assets/135498180/95f863e2-9d99-4952-b574-b97da305a50f)
 ## Usage guidelines
 Currently, this script must be downloaded and ran through an IDE or command prompt/terminal. Once downloaded, make sure to change the `modify_me.json` folder with probabilities from your Chess.com profile for the specified game type that you wish to emulate the amount of trials needed to get a positive W/D/L. That information can be pulled from your Chess.com stats for the game type you wish to emulate (i.e. rapid, bullet, blitz) as the chess.com API I am using does not currently support probabilistic information. Feel free to use any time span of probability, but results may vary. 
 ## Disclaimers
