@@ -13,6 +13,8 @@ draw_p = round(float(input("What is your draw percentage? (Please enter a decima
 # Code verifying if user input fits within the domain of the program
 if not (0 <= win_p <= 1) and (0 <= draw_p <= 1):
     raise CustomExceptions.IllegalProbabilityException
+elif (win_p + draw_p) > 1:
+    raise CustomExceptions.IllegalProbabilityException
 if game_type == 1:
     game_type_str += "chess_bullet"
 elif game_type == 2:
