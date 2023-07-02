@@ -1,16 +1,16 @@
 import random
 import chessdotcom
-import json
 from exceptions import CustomExceptions
 import matplotlib.pyplot as plt
 
 username = input("Please enter your chess.com username: ")
 game_type = int(input("What game type would you like to view? Bullet = 1, Blitz = 2, Rapid = 3, Daily = 4 (Please input only the number!): "))
 game_type_str = ""
+win_p = round(float(input("What is your win percentage? (Please enter a decimal number between 0 and 1.")), 2)
+draw_p = round(float(input("What is your draw percentage? (Please enter a decimal number between 0 and 1.")), 2)
 
-f = open("modify_me.json", "r")
-info = json.load(f)
-
+if not (0 <= win_p <= 1) and (0 <= draw_p <= 1):
+    raise CustomExceptions.IllegalProbabilityException
 if not (1 <= game_type <= 4):
     raise CustomExceptions.InvalidGameType
 elif game_type == 1:
@@ -51,7 +51,7 @@ def win_game(p_win: float, p_draw: float):
         return 0
 
 while wins < losses:
-    game_outcome = win_game(info['win_percentage'], info['draw_percentage'])
+    game_outcome = win_game(win_p, draw_p)
     if game_outcome == 2:
         wins += 1
     elif game_outcome == 1:
@@ -74,7 +74,6 @@ ax.annotate(f"Wins: {wins_growth[0]}", xy=(x[0], wins_growth[0]))
 ax.annotate(f"Draws: {draws_growth[0]}", xy=(x[0], draws_growth[0]))
 ax.annotate(f"Losses: {losses_growth[0]}", xy=(x[0], losses_growth[0]))
 ax.legend()
-ax.set_title("Projected Chess W/D/L Growth")
-ax.text(trials - (len(x) / 2), wins_growth[-1], f'{trials} trials expected')
+ax.set_title(f"Projected Chess W/D/L Growth for {username}")
+ax.text(float(len(x) / 2), wins_growth[-1], f'{trials} trials expected')
 plt.show()
-f.close()
